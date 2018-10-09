@@ -17,7 +17,7 @@
  ## localhost:3000
  ## To fetch the details of employee details -> localhost:3000/employees
  
- ##TODO CLIENT
+ ## TODO CLIENT
 
  * [X] Adding an angular cli
  * [X] creating new angular application name as client & routing {to router the modules}
