@@ -1,0 +1,104 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="">TODO-MEAN STACK</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <!-- <li class="nav-item active">
+        <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" routerlink="/employee">Employee detail</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<blockquote class="blockquote">
+  <p class="mb-0"> CRUD operation <br>enter the employee details in below form
+     <footer class="blockquote-footer">Done<cite title="Source Title"> -By Kamalesh</cite></footer>
+</blockquote>
+<form>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content white-text">
+        <div class="row">
+          <div class="col s5">
+            <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeService.selectedEmployee._id">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name"
+                    placeholder="Enter your name" required>
+                  <label>Name : * </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="position" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.position"
+                    placeholder="Eg : Developer" required>
+                  <label>Position : *</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="office" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.office"
+                    placeholder="Enter office location" required>
+                  <label>Office : * </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="salary" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary"
+                    placeholder="Salary per annum" required>
+                  <label>Salary : * </label>
+                </div>
+              </div>
+              <label class="red-text">required field *</label>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn btn-custom right" type="button" (click)="resetForm(employeeForm)">Reset</button>
+                  <button class="btn btn-custom right"  type="submit" [disabled]="!employeeForm.valid">Submit</button>
+                </div>
+              </div>
+              
+            </form>
+          </div>
+          <div class="col s7">
+            <table class="responsive-table highlight">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Salary</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let emp of employeeService.employees">
+                <td>{{emp.name}}</td>
+                <td>{{emp.position}}</td>
+                <td>{{emp.office}}</td>
+                <td>{{emp.salary}}</td>
+                <td>
+                  <a class="action-btn" (click)="onEdit(emp)">
+                    <i class="material-icons">edit</i>
+                  </a>
+                  <a class="action-btn" (click)="onDelete(emp._id,employeeForm)">
+                    <i class="material-icons">delete</i>
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- <a routerlink="/employee">employee</a> -->
+<div>
+</div>
+</div>
+</form>
